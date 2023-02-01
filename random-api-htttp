@@ -83,21 +83,30 @@ const server = http.createServer((req, res) => {
                     let names=[]
 
                     for(let x of ${JSON.stringify(resp.results)}){
-                        if (x.name.first.includes(${JSON.stringify(n_ame)})){
-                        names.push(x.name.first);
+                        if (x.name.first.toLowerCase().includes(${JSON.stringify(n_ame)})){
+                        names.push(x);
                         }
                     }
                     
-                    names.sort();
+                    names.sort((a,b)=>{
+                        if (a.name.first.toLowerCase()<b.name.first.toLowerCase()){
+                            return -1
+                        }
+                        return 1
+                    });
                     if(${JSON.stringify(type)}==="desc"){
-                        console.log(names);
                         names.reverse();
-                        console.log(names);
                     }
                     for(let x of names){
                         let p = document.createElement('p');
-                        p.innerText = x;
+                        let q = document.createElement('p');
+                        let r = document.createElement('p');
+                        p.innerText = x.name.first;
+                        q.innerText = x.city;
+                        r.innerText = x.location.state;
                         document.body.appendChild(p)
+                        document.body.appendChild(q)
+                        document.body.appendChild(r)
                     }
                     </script>
                     </body>
