@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/" method = "POST">
+        <input type="text" name="name" value="<%= name_feild %>" placeholder="Enter Name">
+        <input type="text" name="city" value="<%= city_feild %>" placeholder="Enter city">
+        <input type="text" name="state" value="<%= state_feild %>" placeholder="Enter state">
+        <select name="sort" id="sort">
+          <option value="asc">Sort asc</option>
+          <option value="desc">Sort desc</option> 
+      </select>
+        <input type="submit">
+        </form>
+        <div >
+                <% listnames.map((e)=>{%>
+                    <div style="border-bottom: 1px solid black; padding:5px">
+                    <img src= <%= e.picture.large %> alt="ok"></img>
+                        <h1><%= e.name.first %> <%= e.name.last %></h1>
+                        <h3><%= e.location.city %> </h3>
+                        <h3><%= e.location.country %> </h3>
+                        <h3><%= e.phone %> </h3>
+                        <img src="" alt="">
+                    </div>
+                    <% }); %>
+        </div>
+</body>
+</html>
